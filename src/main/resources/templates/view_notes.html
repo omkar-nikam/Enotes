@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeLeaf.org" th:replace="~{base :: Layout(~{::title}, ~{::section} ) }">
+<head>
+<meta charset="ISO-8859-1">
+<title>View Page</title>
+</head>
+<body>
+	<section>
+		
+<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+			<h5 class="text-center text-primary">view all notes</h5>
+			<th:block th:if="${session.msg}">
+				<p class="fs-5 text-center text-success">[[${session.msg}]]</p>	
+				<th:block th:text="${@userServiceImpl.removeSessionMessage()}"></th:block>
+			    </th:block>
+			<div th:each="n:${noteslist}" class="card mt-2 shadow p-1 mb-1 bg-body rounded">
+				<div class="card-body">
+					<div class="text-center text-primary">
+						<i class="far fa-clipboard fa-2x"></i>
+					</div>
+					<h6>[[${n.title}]]</h6>
+					<p>[[${n.description}]]</p>
+					
+					<h6>Publish Date:<span class="fw-bold text-primary">[[${n.date}]]</span></h6>
+					<div class="text-center">
+						<a th:href="@{'editnote/'+${n.id}}" class="btn btn-sm bg-success text-white">Edit</a>
+						<a th:href="@{'deletenote/'+${n.id}}" class="btn btn-sm bg-danger text-white">Delete</a>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>		
+	</section>
+
+</body>
+</html>

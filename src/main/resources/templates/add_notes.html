@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeLeaf.org" th:replace="~{base :: Layout(~{::title}, ~{::section} ) }">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Notes Page</title>
+</head>
+<body>
+	<section>
+		<div class="container p-2">
+		<div class="col-md-10 offset-md-1">
+			<div class="card">
+				<div class="text-center card-header text-success">
+						<i class="fas fa-user-friends fa-3x"></i>
+					
+						<h5>Add Note</h5>
+						<th:block th:if="${session.msg}">
+				<p class="fs-5 text-center text-success">[[${session.msg}]]</p>	
+				<th:block th:text="${@userServiceImpl.removeSessionMessage()}"></th:block>
+			    </th:block>
+				</div>
+				<div class="card-body">
+					
+					
+					<form action="saveNotes" method="post">
+						<div class="form-group mb-3">
+						<label>Enter Title</label> <input type="text" name="title"
+							required class="form-control">
+						</div>
+								
+							
+							<div class="form-group mb-3">
+								<label>Enter Description</label>
+								<textarea required rows="6" cols="" name="description" 
+								class="form-control"></textarea>
+							</div>
+							<div class="text-center">
+							<button class="btn btn-success ">Add Note</button>
+						</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+	</section>
+
+</body>
+</html>
